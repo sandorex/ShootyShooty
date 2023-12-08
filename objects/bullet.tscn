@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://djrnxyp4e0vld"]
+
+[ext_resource type="Texture2D" uid="uid://18cwtqbkujoe" path="res://assets/bullet_normal.png" id="1_mut7b"]
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_ypu52"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5g7e"]
+size = Vector2(10, 10)
+
+[node name="Bullet" type="RigidBody2D"]
+lock_rotation = true
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_ypu52")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_s5g7e")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_mut7b")
+offset = Vector2(0, 4)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

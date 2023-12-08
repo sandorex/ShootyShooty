@@ -1,26 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgbb7t0p5y0ot"]
+[gd_scene load_steps=3 format=3 uid="uid://dgbb7t0p5y0ot"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_e1r5l"]
+[ext_resource type="PackedScene" uid="uid://xafu4q0tjbuw" path="res://objects/player.tscn" id="1_4ispp"]
 [ext_resource type="Texture2D" uid="uid://cjwvsljya34l1" path="res://icon.svg" id="2_v41cb"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_171t3"]
-radius = 64.0
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(586, 409)
-script = ExtResource("1_e1r5l")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("2_v41cb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CircleShape2D_171t3")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position_smoothing_enabled = true
-position_smoothing_speed = 3.0
+[node name="Player" parent="." instance=ExtResource("1_4ispp")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(105, 91)

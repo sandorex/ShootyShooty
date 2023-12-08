@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://xafu4q0tjbuw"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_m4gqv"]
+[ext_resource type="Texture2D" uid="uid://bv04rtgrcmqhr" path="res://assets/soldier_01.png" id="2_sbou6"]
+[ext_resource type="Texture2D" uid="uid://dt7c2smk3tcup" path="res://assets/basic_gun_yellow.png" id="3_7wi78"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_171t3"]
+radius = 32.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(586, 409)
+script = ExtResource("1_m4gqv")
+
+[node name="Character" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+scale = Vector2(5, 5)
+texture = ExtResource("2_sbou6")
+
+[node name="Weapon" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+scale = Vector2(5, 5)
+texture = ExtResource("3_7wi78")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
+shape = SubResource("CircleShape2D_171t3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+
+[node name="BulletSpawnMarker" type="Marker2D" parent="."]
+position = Vector2(70, 42)

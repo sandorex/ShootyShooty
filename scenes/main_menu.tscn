@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://1eso5orfqlw2"]
+
+[ext_resource type="Texture2D" uid="uid://cjwvsljya34l1" path="res://icon.svg" id="1_bbw0c"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_o60pt"]
+[ext_resource type="Texture2D" uid="uid://bv04rtgrcmqhr" path="res://assets/soldier_01.png" id="1_wmtj3"]
+[ext_resource type="Texture2D" uid="uid://dniadrqnhwmem" path="res://assets/github_mark.png" id="4_quepn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t5xl6"]
+font_size = 24
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_o60pt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "SASS"
+label_settings = SubResource("LabelSettings_t5xl6")
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start the demo"
+icon = ExtResource("1_wmtj3")
+
+[node name="OptionsButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+icon = ExtResource("1_bbw0c")
+expand_icon = true
+
+[node name="AboutButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "About
+"
+icon = ExtResource("1_bbw0c")
+expand_icon = true
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+icon = ExtResource("1_bbw0c")
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 25
+
+[node name="GithubButton" type="Button" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 32
+icon = ExtResource("4_quepn")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/GithubButton" to="." method="_on_github_button_pressed"]
